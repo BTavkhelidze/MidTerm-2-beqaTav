@@ -18,22 +18,30 @@ function App() {
     fetchApi();
   }, []);
 
+  // const [oldPersons, setOldPersons] = useState()
+
+  const isOld = (person) => person.registered.age > 59;
+
   return (
     <>
       <h1 className='text-3xl font-bold text-center'>Midterm 2</h1>
 
-      {data.map((person) => (
-        <div key={person.id} className='mb-5'>
-          <p>Age: {person.registered.age}</p>
-          <p>
-            Name: {person.name.title} {person.name.first} {person.name.last}
-          </p>
-          <p>username: {person.login.username}</p>
-          <p>city: {person.location.city}</p>
-          <p>country: {person.location.country}</p>
-          <p>postcode:{person.location.postcode}</p>
-        </div>
-      ))}
+      {data.map((person) =>
+        isOld(person) ? (
+          <div key={person.id} className='mb-5'>
+            <p>Age: {person.registered.age}</p>
+            <p>
+              Name: {person.name.title} {person.name.first} {person.name.last}
+            </p>
+            <p>username: {person.login.username}</p>
+            <p>city: {person.location.city}</p>
+            <p>country: {person.location.country}</p>
+            <p>postcode:{person.location.postcode}</p>
+          </div>
+        ) : (
+          <p>Not Found</p>
+        )
+      )}
     </>
   );
 }
