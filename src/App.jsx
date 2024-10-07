@@ -20,7 +20,7 @@ function App() {
 
   // const [oldPersons, setOldPersons] = useState()
 
-  const isOld = (person) => person.registered.age > 59;
+  const isOld = (person) => person.registered.age > 50;
 
   return (
     <>
